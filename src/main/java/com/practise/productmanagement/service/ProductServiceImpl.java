@@ -40,7 +40,12 @@ public class ProductServiceImpl implements ProductService{
 
   @Override
   public Product updateProduct(Product product, Integer id) {
-    return productRepo.save(product);
+    Product oldProduct = productRepo.findById(id).get();
+    oldProduct.setProductName(product.getProductName());
+    oldProduct.setProductDesciption(product.getProductDesciption());
+    oldProduct.setProductPrice(product.getProductPrice());
+    oldProduct.setProductPrice(product.getProductPrice());
+    return productRepo.save(oldProduct);
   }
 }
 
